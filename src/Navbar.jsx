@@ -1,74 +1,89 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router";
 import logo from "./assets/logo-2.png";
-import { MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { MagnifyingGlassIcon, List, X } from "@phosphor-icons/react";
+import { productCategories } from "./CategoryBar";
 
 const routes = [
-    { name: "Menu", url: "/" },
+    { name: "Home", url: "/" },
+    { name: "Products", url: "/products" },
     { name: "About", url: "/about" },
-    { name: "Blogs", url: "/blogs" },
     { name: "Contact", url: "/contact" }
-]
+];
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const searchRef = useRef(null);
+
+    // Close search on outside click
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (searchRef.current && !searchRef.current.contains(e.target)) {
+                setIsSearchOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
-        <header className="bg-white tracking-wide relative z-50">
+        <header className="relative z-50 backdrop-blur-lg bg-white shadow-lg">
             {/* Top Bar */}
-            <section className="relative flex items-center px-4 sm:px-10 py-2">
+            <section className="flex items-center px-4 sm:px-10 py-4">
                 {/* Logo */}
-                <NavLink to="/">
-                    <img src={logo} alt="logo" className="w-36" />
+                <NavLink to="/" className="flex items-center">
+                    <img src={logo} alt="Raj Industries Logo" className="h-12 md:h-14" />
                 </NavLink>
 
                 {/* Desktop Menu */}
-                <ul className="hidden lg:flex flex-1 justify-center space-x-8">
+                <ul className="hidden lg:flex flex-1 justify-center gap-10">
                     {routes.map((item) => (
                         <li key={item.name}>
-                            <NavLink to={item.url} className="hover:text-[#111] text-slate-900 font-medium text-[15px] cursor-pointer">
+                            <NavLink
+                                to={item.url}
+                                className="text-black tracking-wider relative group"
+                            >
                                 {item.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
                             </NavLink>
                         </li>
                     ))}
                 </ul>
 
                 {/* Right Actions */}
-                <div className="ml-auto flex items-center gap-4">
-                    <button className="text-[15px] font-medium text-black/60 hover:text-black cursor-pointer">
-                        <MagnifyingGlassIcon size={30} weight="bold" />
+                <div className="ml-auto flex items-center gap-4 relative">
+                    {/* 🔍 Search */}
+                    <div ref={searchRef} className="relative hidden md:flex items-center">
+                        {/* Input */}
+                        <input
+                            type="text"
+                            placeholder="Search products..."
+                            className={`absolute right-10 h-10 rounded-full px-4 text-sm outline-none border border-blue-200 shadow-md transition-all duration-300 ease-in-out text-black ${isSearchOpen ? "w-64 opacity-100 -translate-x-2" : "w-0 opacity-0 translate-x-6 pointer-events-none"}`}
+                        />
+
+                        {/* Icon */}
+                        <button
+                            onClick={() => setIsSearchOpen((prev) => !prev)}
+                            className="relative z-10 w-10 h-10 rounded-full bg-white text-black border-2 border-gray-400 hover:bg-black/10 flex items-center justify-center shadow cursor-pointer transition-colors ease-in"
+                        >
+                            <MagnifyingGlassIcon size={20} weight="bold" />
+                        </button>
+                    </div>
+
+                    {/* CTA */}
+                    <button className="hidden md:block bg-linear-to-br from-black to-gray-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:from-black hover:to-black transition-colors ease-in cursor-pointer">
+                        Get Quote
                     </button>
 
                     {/* Hamburger */}
                     <button
                         onClick={() => setIsOpen(true)}
-                        className="lg:hidden"
+                        className="lg:hidden text-white hover:scale-110 transition-transform"
                     >
-                        {/* <svg className="w-7 h-7 fill-black" viewBox="0 0 20 20">
-                            <path d="M3 5h14M3 10h14M3 15h14" />
-                        </svg> */}
-                        menu
+                        <List size={28} weight="bold" />
                     </button>
                 </div>
-            </section>
-
-            <section className="relative hidden lg:flex items-center px-4 sm:px-10 py-2 bg-[#111]">
-                <ul className="flex flex-1 justify-center space-x-8">
-                    {[
-                        "Category 1",
-                        "Category 2",
-                        "Category 3",
-                        "Category 4",
-                        "Category 5",
-                        "Category 6"
-                    ].map((item) => (
-                        <li key={item}>
-                            <a className="hover:text-white text-white/90 font-medium text-[15px] cursor-pointer">
-                                {item}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
             </section>
 
             {/* Overlay */}
@@ -81,39 +96,51 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <aside
-                className={`fixed top-0 left-0 h-full w-72 bg-white z-50 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:hidden`}
+                className={`fixed top-0 left-0 h-full w-80 bg-white z-50 transition-transform duration-300 shadow-xl
+          ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:hidden`}
             >
-                {/* Close Button */}
+                {/* Close */}
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="absolute top-4 right-4 w-9 h-9 border rounded-full flex items-center justify-center"
+                    className="absolute top-4 right-4 w-10 h-10 border rounded-full flex items-center justify-center hover:border-blue-600 hover:text-blue-600"
                 >
-                    ✕
+                    <X size={20} />
                 </button>
 
-                <div className="p-6">
-                    <img src={logo} alt="logo" className="w-36 mb-6" />
+                <div className="p-6 pt-16">
+                    <img src={logo} alt="Raj Industries Logo" className="h-12 mb-8" />
 
-                    <ul className="space-y-4">
-                        {[
-                            "Breakfast",
-                            "Salads",
-                            "Sides",
-                            "Treats",
-                            "Drinks",
-                            "Kid's Meals",
-                            "Catering",
-                        ].map((item) => (
-                            <li key={item}>
-                                <a
+                    <ul className="space-y-5 mb-8">
+                        {routes.map((item) => (
+                            <li key={item.name}>
+                                <NavLink
+                                    to={item.url}
                                     onClick={() => setIsOpen(false)}
-                                    className="block text-slate-600 hover:text-[#111] cursor-pointer"
+                                    className="block text-slate-700 font-semibold border-b pb-2 hover:text-blue-600"
                                 >
-                                    {item}
-                                </a>
+                                    {item.name}
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
+
+                    <h3 className="font-bold text-sm uppercase tracking-wider mb-4">
+                        Products
+                    </h3>
+
+                    <ul className="space-y-3 mb-8">
+                        {productCategories.map((item) => (
+                            <li key={item}>
+                                <span className="text-slate-600 hover:text-blue-600 cursor-pointer">
+                                    {item}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <button className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold shadow hover:bg-blue-700">
+                        Get Quote
+                    </button>
                 </div>
             </aside>
         </header>

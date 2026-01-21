@@ -6,9 +6,11 @@ const Footer = () => {
         <footer className="bg-linear-to-r from-[#111] via-slate-900 to-[#111] pt-14 pb-6 px-12 tracking-wide">
             <div className="max-w-2xl mx-auto flex flex-col items-center text-center">
                 <NavLink to="/">
-                    <img src={logo} alt="logo" className="w-36" />
+                    <img src={logo} alt="Raj Industries Logo" className="h-16" />
                 </NavLink>
-                <p className="text-sm mt-6 text-slate-300 leading-relaxed">Raj Industries delivers reliable, high-performance Home Appliances and Pump Components designed for durability and efficiency.</p>
+                <p className="text-sm mt-6 text-slate-300 leading-relaxed max-w-2xl">
+                    Raj Industries delivers reliable, high-performance concealed pumps and industrial magnets designed for durability and efficiency. We provide comprehensive solutions for all your industrial pumping and magnetic needs.
+                </p>
 
                 <ul className="flex flex-wrap justify-center gap-6 mt-8">
                     <li>
@@ -30,11 +32,11 @@ const Footer = () => {
                         <a href='javascript:void(0)'>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 152 152">
                                 <linearGradient id="a" x1="22.26" x2="129.74" y1="22.26" y2="129.74" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" stop-color="#fae100" />
-                                    <stop offset=".15" stop-color="#fcb720" />
-                                    <stop offset=".3" stop-color="#ff7950" />
-                                    <stop offset=".5" stop-color="#ff1c74" />
-                                    <stop offset="1" stop-color="#6c1cd1" />
+                                    <stop offset="0" stopColor="#fae100" />
+                                    <stop offset=".15" stopColor="#fcb720" />
+                                    <stop offset=".3" stopColor="#ff7950" />
+                                    <stop offset=".5" stopColor="#ff1c74" />
+                                    <stop offset="1" stopColor="#6c1cd1" />
                                 </linearGradient>
                                 <g data-name="Layer 2">
                                     <g data-name="03.Instagram">
@@ -69,9 +71,9 @@ const Footer = () => {
                                 data-original="#000000" />
                         </svg>
                     </div>
-                    <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3">
-                        <small className="block">Tel</small>
-                        <span className="font-medium">180-548-2588</span>
+                    <a href="tel:+1805482588" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
+                        <small className="block text-slate-400">Phone</small>
+                        <span className="font-medium">+1 (805) 482-588</span>
                     </a>
                 </li>
                 <li className="flex items-center">
@@ -82,9 +84,9 @@ const Footer = () => {
                                 data-original="#000000" />
                         </svg>
                     </div>
-                    <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3">
-                        <small className="block">Mail</small>
-                        <span className="font-medium">info@example.com</span>
+                    <a href="mailto:info@rajindustries.com" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
+                        <small className="block text-slate-400">Email</small>
+                        <span className="font-medium">info@rajindustries.com</span>
                     </a>
                 </li>
                 <li className="flex items-center">
@@ -98,9 +100,9 @@ const Footer = () => {
                                 data-original="#000000" />
                         </svg>
                     </div>
-                    <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3">
-                        <small className="block">Address</small>
-                        <span className="font-medium">123 Main Street City, Country</span>
+                    <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
+                        <small className="block text-slate-400">Address</small>
+                        <span className="font-medium">Industrial Area, Phase II<br />Manufacturing District<br />India</span>
                     </a>
                 </li>
                 <li className="flex items-center">
@@ -111,9 +113,9 @@ const Footer = () => {
                                 data-original="#000000" />
                         </svg>
                     </div>
-                    <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3">
-                        <small className="block">Fax</small>
-                        <span className="font-medium">+1-548-2588</span>
+                    <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
+                        <small className="block text-slate-400">Fax</small>
+                        <span className="font-medium">+1 (805) 482-589</span>
                     </a>
                 </li>
             </ul>
@@ -132,7 +134,7 @@ const Footer = () => {
                         <a href='javascript:void(0)' className="text-slate-300 font-medium hover:underline">Security</a>
                     </li>
                 </ul>
-                <p className="text-sm text-slate-300 md:ml-auto">© ReadymadeUI. All rights reserved.</p>
+                <p className="text-sm text-slate-300 md:ml-auto">© {new Date().getFullYear()} Raj Industries. All rights reserved.</p>
             </div>
         </footer>
     )
