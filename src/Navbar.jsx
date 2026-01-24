@@ -3,6 +3,7 @@ import { NavLink } from "react-router";
 import logo from "./assets/logo-2.png";
 import { MagnifyingGlassIcon, List, X } from "@phosphor-icons/react";
 import { productCategories } from "./CategoryBar";
+import { ListIcon, XIcon } from "lucide-react";
 
 const routes = [
     { name: "Home", url: "/" },
@@ -79,9 +80,9 @@ const Navbar = () => {
                     {/* Hamburger */}
                     <button
                         onClick={() => setIsOpen(true)}
-                        className="lg:hidden text-white hover:scale-110 transition-transform"
+                        className="lg:hidden text-black hover:scale-110 transition-transform"
                     >
-                        <List size={28} weight="bold" />
+                        <ListIcon size={28} weight="bold" />
                     </button>
                 </div>
             </section>
@@ -96,18 +97,17 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <aside
-                className={`fixed top-0 left-0 h-full w-80 bg-white z-50 transition-transform duration-300 shadow-xl
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:hidden`}
+                className={`fixed top-0 left-0 h-full w-80 bg-white z-50 transition-transform duration-300 shadow-xl ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:hidden`}
             >
                 {/* Close */}
                 <button
                     onClick={() => setIsOpen(false)}
                     className="absolute top-4 right-4 w-10 h-10 border rounded-full flex items-center justify-center hover:border-blue-600 hover:text-blue-600"
                 >
-                    <X size={20} />
+                    <XIcon size={20} />
                 </button>
 
-                <div className="p-6 pt-16">
+                <div className="p-6 pt-16 h-full bg-white">
                     <img src={logo} alt="Raj Industries Logo" className="h-12 mb-8" />
 
                     <ul className="space-y-5 mb-8">

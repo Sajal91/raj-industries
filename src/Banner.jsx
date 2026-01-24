@@ -1,5 +1,6 @@
 import banner1 from "./assets/banner-1.png"
 import banner2 from "./assets/banner-2.png"
+import banner3 from "./assets/banner-3.png"
 
 import {
     Carousel,
@@ -18,6 +19,10 @@ const slides = [
     {
         id: 2,
         img: banner2,
+    },
+    {
+        id: 3,
+        img: banner3,
     }
 ]
 
@@ -27,7 +32,8 @@ const Banner = () => {
             <Carousel className="w-full">
                 <CarouselContent>
                     {slides.map((slide) => (
-                        <CarouselItem key={slide.id}>
+                        <CarouselItem key={slide.id} className={"relative"}>
+                            <div className="absolute left-0 top-0 w-full h-full bg-black/20"></div>
                             <img
                                 src={slide.img}
                                 alt=""
@@ -36,7 +42,8 @@ const Banner = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselDots />
+
+                <CarouselDots count={slides.length} />
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>

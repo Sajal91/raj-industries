@@ -120,8 +120,8 @@ function CarouselNext({ className }) {
     )
 }
 
-function CarouselDots({ className }) {
-    const { scrollSnaps, selectedIndex, scrollTo } = useCarousel()
+function CarouselDots({ count, className }) {
+    const { selectedIndex, scrollTo } = useCarousel()
 
     return (
         <div
@@ -130,7 +130,7 @@ function CarouselDots({ className }) {
                 className
             )}
         >
-            {scrollSnaps.map((_, index) => (
+            {Array.from({ length: count }).map((_, index) => (
                 <button
                     key={index}
                     onClick={() => scrollTo(index)}
