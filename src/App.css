@@ -11,6 +11,7 @@ html {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -61,11 +62,20 @@ html {
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
 }
 
+.model-viewer {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
 /* Loading Animation */
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -81,13 +91,19 @@ html {
     padding-bottom: 5rem;
 }
 
-/* Industrial Color Scheme */
+/* Dark Theme Color Scheme */
 :root {
-    --primary-blue: #2563eb;
-    --primary-blue-dark: #1d4ed8;
-    --accent-slate: #1e293b;
-    --text-slate: #475569;
-    --bg-slate-light: #f8fafc;
+    --primary-blue: #3b82f6; /* blue-500 */
+    --primary-blue-dark: #2563eb; /* blue-600 */
+    --accent-cyan: #06b6d4; /* cyan-500 */
+    --accent-purple: #8b5cf6; /* purple-500 */
+    --bg-dark: #0f172a; /* slate-900 */
+    --bg-card: #1e293b; /* slate-800 */
+    --bg-card-hover: #334155; /* slate-700 */
+    --text-primary: #f1f5f9; /* slate-100 */
+    --text-secondary: #cbd5e1; /* slate-300 */
+    --text-muted: #94a3b8; /* slate-400 */
+    --border-color: #334155; /* slate-700 */
 }
 
 /* Professional Typography */
@@ -139,21 +155,20 @@ html {
     border-radius: 0.75rem;
 }
 
-/* Scrollbar Styling */
+/* Scrollbar Styling - Dark Theme */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #1e293b; /* slate-800 */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #475569; /* slate-600 */
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: #64748b; /* slate-500 */
 }
-

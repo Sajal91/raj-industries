@@ -1,4 +1,11 @@
+import { motion } from "framer-motion"
+import { useInView } from "framer-motion"
+import { useRef } from "react"
+
 const Features = () => {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, margin: "-100px" })
+
     const features = [
         {
             icon: (
@@ -56,64 +63,134 @@ const Features = () => {
         }
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    }
+
+    const statsVariants = {
+        hidden: { opacity: 0, scale: 0.5 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.5
+            }
+        }
+    }
+
     return (
-        <section className="py-20 px-6 sm:px-10 bg-white">
+        <section className="py-20 px-6 sm:px-10 bg-linear-to-b from-slate-900 via-slate-800 to-slate-900" ref={ref}>
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Why Choose Us?
                     </h2>
-                    <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-                    <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                    <motion.div
+                        initial={{ width: 0 }}
+                        animate={isInView ? { width: 96 } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="h-1 bg-linear-to-r from-cyan-500 to-blue-500 mx-auto mb-6 rounded-full"
+                    ></motion.div>
+                    <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
                         We are committed to delivering excellence through quality products, innovative solutions, and exceptional customer service.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Features Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
                     {features.map((feature, index) => (
-                        <div
+                        <motion.div
                             key={index}
-                            className="text-center p-8 rounded-xl border border-slate-200 hover:border-blue-600 hover:shadow-xl transition-all duration-300 group bg-slate-50 hover:bg-white"
+                            variants={itemVariants}
+                            // whileHover={{ y: -10, scale: 1.02 }}
+                            className="text-center p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 group bg-slate-800/50 hover:bg-slate-800"
                         >
                             {/* Icon */}
-                            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+                            <motion.div
+                                // whileHover={{ rotate: 360 }}
+                                // transition={{ duration: 0.6 }}
+                                className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-linear-to-br from-cyan-500/20 to-blue-500/20 text-cyan-400 mb-6 group-hover:from-cyan-500 group-hover:to-blue-500 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 shadow-lg group-hover:shadow-xl group-hover:shadow-cyan-500/20 border border-cyan-500/30 group-hover:border-cyan-400"
+                            >
                                 {feature.icon}
-                            </div>
+                            </motion.div>
 
                             {/* Title */}
-                            <h3 className="text-xl font-bold text-slate-900 mb-4">
+                            <h3 className="text-xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
                                 {feature.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-300 leading-relaxed">
                                 {feature.description}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Stats Section */}
-                <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">15+</div>
-                        <div className="text-slate-600 font-semibold">Years Experience</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
-                        <div className="text-slate-600 font-semibold">Happy Clients</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">1000+</div>
-                        <div className="text-slate-600 font-semibold">Projects Completed</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">24/7</div>
-                        <div className="text-slate-600 font-semibold">Support Available</div>
-                    </div>
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+                >
+                    {[
+                        { number: "20+", label: "Years Experience" },
+                        { number: "500+", label: "Happy Clients" },
+                        { number: "1000+", label: "Projects Completed" },
+                        { number: "24/7", label: "Support Available" }
+                    ].map((stat, index) => (
+                        <motion.div
+                            key={index}
+                            variants={statsVariants}
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            transition={{ delay: 0.6 + index * 0.1 }}
+                            // whileHover={{ scale: 1.1, y: -5 }}
+                            className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 text-white shadow-lg transition-all ease-in"
+                        >
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={isInView ? { scale: 1 } : {}}
+                                transition={{ delay: 0.7 + index * 0.1, type: "spring", stiffness: 200 }}
+                                className="text-4xl md:text-5xl font-bold mb-2"
+                            >
+                                {stat.number}
+                            </motion.div>
+                            <div className="text-cyan-100 font-semibold">{stat.label}</div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );

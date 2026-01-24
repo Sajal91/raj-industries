@@ -137,8 +137,8 @@ function CarouselDots({ count, className }) {
                     className={cn(
                         "h-2.5 w-2.5 rounded-full transition-all",
                         selectedIndex === index
-                            ? "bg-black scale-110"
-                            : "bg-black/50 hover:bg-black"
+                            ? "bg-white scale-110"
+                            : "bg-white/30 hover:bg-white"
                     )}
                 />
             ))}
