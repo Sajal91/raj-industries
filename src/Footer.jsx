@@ -3,7 +3,7 @@ import logo from "./assets/logo-2.png"
 
 const Footer = () => {
     return (
-        <footer className="bg-linear-to-r from-[#111] via-slate-900 to-[#111] pt-14 pb-6 px-12 tracking-wide">
+        <footer className="bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 pt-14 pb-6 px-12 tracking-wide">
             <div className="max-w-2xl mx-auto flex flex-col items-center text-center">
                 <NavLink to="/">
                     <img src={logo} alt="Raj Industries Logo" className="h-16" />

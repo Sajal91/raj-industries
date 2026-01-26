@@ -1,12 +1,39 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Slab:wght@100..900&display=swap');
 
+/* Theme Color Variables */
+:root {
+    /* Primary Colors */
+    --color-primary: #2563eb; /* blue-600 */
+    --color-primary-dark: #1d4ed8; /* blue-700 */
+    --color-primary-light: #3b82f6; /* blue-500 */
+    
+    /* Neutral Colors */
+    --color-bg: #ffffff; /* white */
+    --color-bg-secondary: #f8fafc; /* slate-50 */
+    --color-bg-tertiary: #f1f5f9; /* slate-100 */
+    
+    /* Text Colors */
+    --color-text-primary: #000000; /* black */
+    --color-text-secondary: #1e293b; /* slate-800 */
+    --color-text-muted: #64748b; /* slate-500 */
+    --color-text-light: #ffffff; /* white */
+    
+    /* Border Colors */
+    --color-border: #e2e8f0; /* slate-200 */
+    --color-border-dark: #cbd5e1; /* slate-300 */
+    
+    /* Accent Colors */
+    --color-accent: #2563eb; /* blue-600 */
+    --color-accent-hover: #1d4ed8; /* blue-700 */
+}
+
 * {
     font-family: "Manrope", sans-serif !important;
     font-optical-sizing: auto;
 }
 
 body {
-    background-color: #0f172a; /* slate-900 */
-    color: #f1f5f9; /* slate-100 */
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
 }

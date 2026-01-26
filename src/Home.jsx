@@ -4,14 +4,16 @@ import Products from "./Products"
 import Features from "./Features"
 import Testimonials from "./Testimonials"
 import CategoryBar from "./CategoryBar"
+import Advertisement from "./Advertisement"
 
-const Home = () => {
+const Home = ({ setIsModalOpen, setProduct }) => {
     return (
         <>
-            <CategoryBar />
+            {/* <CategoryBar /> */}
             <Banner />
             <CompanyIntro />
-            <Products />
+            <Advertisement />
+            <Products setProduct={setProduct} setIsModalOpen={setIsModalOpen} />
             <Features />
             <Testimonials />
         </>

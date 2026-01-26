@@ -83,9 +83,9 @@ const Contact = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+        <div className="min-h-screen bg-linear-to-b from-white via-slate-50 to-white">
             {/* Hero Section */}
-            <section className="relative py-20 px-6 sm:px-10 bg-gradient-to-br from-cyan-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+            {/* <section className="relative py-20 px-6 sm:px-10 bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -120,14 +120,14 @@ const Contact = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.6, duration: 0.5 }}
-                            className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"
+                            className="w-24 h-1 bg-white mx-auto rounded-full"
                         ></motion.div>
                     </motion.div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Contact Info Cards */}
-            <section className="py-16 px-6 sm:px-10 -mt-10">
+            {/* <section className="py-16 px-6 sm:px-10 -mt-10">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         variants={containerVariants}
@@ -140,20 +140,20 @@ const Contact = () => {
                                 key={index}
                                 variants={itemVariants}
                                 whileHover={{ y: -10, scale: 1.02 }}
-                                className="bg-slate-800/50 rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 transition-all border border-slate-700 hover:border-cyan-500/50 backdrop-blur-sm"
+                                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all border border-slate-200 hover:border-blue-600 backdrop-blur-sm"
                             >
-                                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${info.color} text-white mb-4 shadow-lg`}>
+                                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-linear-to-br ${info.color} text-white mb-4 shadow-lg`}>
                                     {info.icon}
                                 </div>
-                                <h3 className="text-lg font-bold text-white mb-3">{info.title}</h3>
+                                <h3 className="text-lg font-bold text-black mb-3">{info.title}</h3>
                                 {info.details.map((detail, idx) => (
-                                    <p key={idx} className="text-slate-300 text-sm mb-1">{detail}</p>
+                                    <p key={idx} className="text-slate-700 text-sm mb-1">{detail}</p>
                                 ))}
                             </motion.div>
                         ))}
                     </motion.div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Contact Form Section */}
             <section ref={ref} className="py-20 px-6 sm:px-10">
@@ -169,12 +169,12 @@ const Contact = () => {
                             initial={{ opacity: 0, x: -50 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="bg-slate-800/50 rounded-2xl p-8 shadow-xl border border-slate-700 backdrop-blur-sm"
+                            className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 backdrop-blur-sm"
                         >
-                            <h2 className="text-3xl font-bold text-white mb-6">Send us a Message</h2>
+                            <h2 className="text-3xl font-bold text-black mb-6">Send us a Message</h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-2">
+                                    <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
                                         Full Name *
                                     </label>
                                     <input
@@ -184,14 +184,14 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900 text-white placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all"
-                                        placeholder="John Doe"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                        placeholder="Enter Your Name"
                                     />
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
-                                        <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-2">
+                                        <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
                                             Email *
                                         </label>
                                         <input
@@ -201,12 +201,12 @@ const Contact = () => {
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900 text-white placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all"
-                                            placeholder="john@example.com"
+                                            className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                            placeholder="Provide your email"
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="phone" className="block text-sm font-semibold text-slate-300 mb-2">
+                                        <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">
                                             Phone
                                         </label>
                                         <input
@@ -215,14 +215,14 @@ const Contact = () => {
                                             name="phone"
                                             value={formData.phone}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900 text-white placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all"
+                                            className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
                                             placeholder="+91 1234567890"
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label htmlFor="subject" className="block text-sm font-semibold text-slate-300 mb-2">
+                                    <label htmlFor="subject" className="block text-sm font-semibold text-slate-700 mb-2">
                                         Subject *
                                     </label>
                                     <input
@@ -232,13 +232,13 @@ const Contact = () => {
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900 text-white placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
                                         placeholder="Product Inquiry"
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="message" className="block text-sm font-semibold text-slate-300 mb-2">
+                                    <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
                                         Message *
                                     </label>
                                     <textarea
@@ -248,7 +248,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         rows={5}
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900 text-white placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all resize-none"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
                                         placeholder="Tell us about your requirements..."
                                     ></textarea>
                                 </div>
@@ -258,7 +258,7 @@ const Contact = () => {
                                     disabled={isSubmitting}
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                    className="w-full bg-blue-600 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 >
                                     {isSubmitting ? (
                                         <>
@@ -286,7 +286,7 @@ const Contact = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="space-y-6"
                         >
-                            <div className="bg-gradient-to-br from-cyan-600 to-blue-600 rounded-2xl p-8 text-white shadow-xl">
+                            <div className="bg-linear-to-br from-blue-600 to-blue-700 rounded-2xl p-8 text-white shadow-xl">
                                 <h3 className="text-2xl font-bold mb-4">Why Contact Us?</h3>
                                 <ul className="space-y-3">
                                     {[
@@ -303,16 +303,16 @@ const Contact = () => {
                                             transition={{ delay: 0.5 + index * 0.1 }}
                                             className="flex items-start gap-3"
                                         >
-                                            <span className="text-cyan-100 mt-1">✓</span>
+                                            <span className="text-blue-100 mt-1">✓</span>
                                             <span>{item}</span>
                                         </motion.li>
                                     ))}
                                 </ul>
                             </div>
 
-                            <div className="bg-slate-800/50 rounded-2xl p-8 shadow-lg border border-slate-700 backdrop-blur-sm">
-                                <h3 className="text-2xl font-bold text-white mb-4">Quick Response</h3>
-                                <p className="text-slate-300 mb-4">
+                            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 backdrop-blur-sm">
+                                <h3 className="text-2xl font-bold text-black mb-4">Quick Response</h3>
+                                <p className="text-slate-700 mb-4">
                                     We typically respond to all inquiries within 24 hours during business days.
                                 </p>
                                 <div className="flex items-center gap-2 text-cyan-400 font-semibold">

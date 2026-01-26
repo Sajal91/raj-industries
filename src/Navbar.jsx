@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { NavLink, useLocation } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "./assets/logo-2.png";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
@@ -19,6 +19,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const searchRef = useRef(null);
     const location = useLocation();
+    const navigate = useNavigate();
 
     // Close search on outside click
     useEffect(() => {
@@ -58,7 +59,8 @@ const Navbar = () => {
     }, [isOpen]);
 
     return (
-        <header className={`z-50 backdrop-blur-lg bg-slate-900/95 transition-all duration-300 ${isScrolled ? "shadow-xl shadow-black/20" : "shadow-lg shadow-black/10"}`}>
+        <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 ${isScrolled ? "shadow-xl" : "shadow-lg"} overflow-hidden py-10`}>
+            {/* <div className="absolute left-0 top-0 w-1/2 h-full -z-1 bg-blue-600 rotate-35"></div> */}
             {/* Top Bar */}
             <section className="flex items-center px-4 sm:px-6 md:px-10 py-3 md:py-4">
                 {/* Logo */}
@@ -81,14 +83,14 @@ const Navbar = () => {
                                 <li key={item.name}>
                                     <NavLink
                                         to={item.url}
-                                        className={`text-slate-300 tracking-wider relative group font-medium transition-colors duration-200 ${
-                                            isActive ? "text-cyan-400 font-semibold" : "hover:text-cyan-400"
+                                        className={`text-black tracking-wider relative group font-medium transition-colors duration-200 text-xl ${
+                                            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"
                                         }`}
                                     >
                                         {item.name}
                                         {/* Active indicator */}
                                         <motion.span
-                                            className="absolute -bottom-1 left-0 h-0.5 bg-linear-to-r from-cyan-400 to-blue-500"
+                                            className="absolute -bottom-1 left-0 h-0.5 bg-blue-600"
                                             initial={{ width: isActive ? "100%" : "0%" }}
                                             animate={{ width: isActive ? "100%" : "0%" }}
                                             whileHover={{ width: "100%" }}
@@ -115,30 +117,31 @@ const Navbar = () => {
                                     transition={{ duration: 0.3 }}
                                     type="text"
                                     placeholder="Search products..."
-                                    className="absolute right-10 h-9 md:h-10 rounded-full px-4 text-sm outline-none border border-cyan-500/50 shadow-md text-white bg-slate-800 placeholder:text-slate-400 focus:border-cyan-400"
+                                    className="absolute right-10 h-9 md:h-10 rounded-full px-4 text-sm outline-none border border-blue-200 shadow-md text-black bg-white placeholder:text-slate-400 focus:border-blue-600"
                                     autoFocus
                                 />
                             )}
                         </AnimatePresence>
 
                         {/* Icon */}
-                        <motion.button
+                        {/* <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setIsSearchOpen((prev) => !prev)}
-                            className={`relative z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-slate-800 text-slate-300 border-2 ${
-                                isSearchOpen ? "border-cyan-400" : "border-slate-700"
-                            } hover:border-cyan-400 flex items-center justify-center shadow-md cursor-pointer transition-colors`}
+                            className={`relative z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white text-black border-2 ${
+                                isSearchOpen ? "border-blue-600" : "border-slate-300"
+                            } hover:border-blue-600 flex items-center justify-center shadow-md cursor-pointer transition-colors`}
                         >
-                            <Search size={18} className={isSearchOpen ? "text-cyan-400" : ""} />
-                        </motion.button>
+                            <Search size={18} className={isSearchOpen ? "text-blue-600" : ""} />
+                        </motion.button> */}
                     </div>
 
                     {/* CTA */}
                     <motion.button
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="hidden sm:block bg-linear-to-r from-cyan-500 to-blue-500 text-white px-4 md:px-6 py-2 rounded-full font-semibold text-sm md:text-base shadow-md hover:shadow-lg hover:shadow-cyan-500/20 transition-all cursor-pointer"
+                        onClick={() => navigate("/contact")}
+                        className="hidden sm:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-full font-semibold text-sm md:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
                     >
                         Get Quote
                     </motion.button>
@@ -148,7 +151,7 @@ const Navbar = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setIsOpen(true)}
-                        className="lg:hidden text-slate-300 p-2 rounded-lg hover:bg-slate-800 transition-colors"
+                        className="lg:hidden text-black p-2 rounded-lg hover:bg-slate-100 transition-colors"
                         aria-label="Open menu"
                     >
                         <ListIcon size={24} />
@@ -172,16 +175,16 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: "-100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-slate-900 border-r border-slate-800 z-50 shadow-2xl lg:hidden overflow-y-auto"
+                            className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white border-r border-slate-200 z-50 shadow-2xl lg:hidden overflow-y-auto"
                         >
                             {/* Header */}
-                            <div className="flex items-center justify-between p-4 border-b border-slate-800 sticky top-0 bg-slate-900 z-10">
+                            <div className="flex items-center justify-between p-4 border-b border-slate-200 sticky top-0 bg-white z-10">
                                 <img src={logo} alt="Raj Industries Logo" className="h-10" />
                                 <motion.button
                                     whileHover={{ scale: 1.1, rotate: 90 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => setIsOpen(false)}
-                                    className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-800 text-slate-300 transition-colors"
+                                    className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 text-black transition-colors"
                                     aria-label="Close menu"
                                 >
                                     <XIcon size={20} />
@@ -207,8 +210,8 @@ const Navbar = () => {
                                                         onClick={() => setIsOpen(false)}
                                                         className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${
                                                             isActive
-                                                                ? "bg-linear-to-r from-cyan-500 to-blue-500 text-white shadow-md shadow-cyan-500/20"
-                                                                : "text-slate-300 hover:bg-slate-800 hover:text-cyan-400"
+                                                                ? "bg-blue-600 text-white shadow-md"
+                                                                : "text-black hover:bg-slate-100 hover:text-blue-600"
                                                         }`}
                                                     >
                                                         <div className="flex items-center justify-between">
@@ -241,7 +244,7 @@ const Navbar = () => {
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: 0.4 + index * 0.05 }}
                                             >
-                                                <span className="block px-4 py-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-800 rounded-lg cursor-pointer transition-colors">
+                                                <span className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors">
                                                     {item}
                                                 </span>
                                             </motion.li>
@@ -254,7 +257,7 @@ const Navbar = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => setIsOpen(false)}
-                                    className="w-full bg-linear-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 transition-all"
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
                                 >
                                     Get Quote
                                 </motion.button>
@@ -266,7 +269,7 @@ const Navbar = () => {
                                         <input
                                             type="text"
                                             placeholder="Search products..."
-                                            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-700 bg-slate-800 text-white placeholder:text-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none text-sm"
+                                            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-300 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none text-sm"
                                         />
                                     </div>
                                 </div>

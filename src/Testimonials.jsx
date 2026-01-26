@@ -65,7 +65,7 @@ const Testimonials = () => {
     }
 
     return (
-        <section className="py-20 px-6 sm:px-10 bg-linear-to-b from-slate-900 via-slate-800 to-slate-900" ref={ref}>
+        <section className="py-20 px-6 sm:px-10 bg-linear-to-b from-white via-slate-50 to-white" ref={ref}>
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <motion.div
@@ -74,7 +74,7 @@ const Testimonials = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
                         Client Testimonials
                     </h2>
                     <motion.div
@@ -83,7 +83,7 @@ const Testimonials = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="h-1 bg-linear-to-r from-cyan-500 to-blue-500 mx-auto mb-6 rounded-full"
                     ></motion.div>
-                    <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
                         See what our valued clients have to say about our products and services. Their success is our commitment.
                     </p>
                 </motion.div>
@@ -100,7 +100,7 @@ const Testimonials = () => {
                             key={index}
                             variants={itemVariants}
                             // whileHover={{ y: -10, scale: 1.02 }}
-                            className="bg-slate-800/50 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 p-8 border border-slate-700 hover:border-cyan-500/50 group backdrop-blur-sm hover:bg-white/5"
+                            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 p-8 border border-slate-200 hover:border-blue-300 group backdrop-blur-sm cursor-default"
                         >
                             {/* Rating */}
                             <motion.div
@@ -129,29 +129,29 @@ const Testimonials = () => {
                             </motion.div>
 
                             {/* Testimonial Text */}
-                            <p className="text-slate-300 leading-relaxed mb-6 text-base group-hover:text-white transition-colors">
+                            <p className="text-slate-700 leading-relaxed mb-6 text-base transition-colors">
                                 "{testimonial.text}"
                             </p>
 
                             {/* Client Info */}
                             <motion.div
-                                whileHover={{ x: 5 }}
-                                className="flex items-center pt-6 border-t border-slate-700"
+                                // whileHover={{ x: 5 }}
+                                className="flex items-center pt-6 border-t border-slate-200"
                             >
                                 <motion.img
                                     whileHover={{ scale: 1.1, rotate: 5 }}
                                     src={testimonial.image}
                                     alt={testimonial.name}
-                                    className="w-14 h-14 rounded-full mr-4 border-2 border-cyan-500/30 group-hover:border-cyan-400 transition-colors"
+                                    className="w-14 h-14 rounded-full mr-4 border-2 border-blue-100 transition-colors"
                                 />
                                 <div>
-                                    <h4 className="font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                    <h4 className="font-bold text-black transition-colors">
                                         {testimonial.name}
                                     </h4>
-                                    <p className="text-sm text-slate-400">
+                                    <p className="text-sm text-slate-600">
                                         {testimonial.position}
                                     </p>
-                                    <p className="text-sm text-cyan-400 font-medium">
+                                    <p className="text-sm text-blue-600 font-medium">
                                         {testimonial.company}
                                     </p>
                                 </div>

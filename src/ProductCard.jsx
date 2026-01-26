@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { BadgeInfo } from "lucide-react"
+import { useState } from "react"
 
 const cardVariants = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -15,7 +15,7 @@ const cardVariants = {
     }),
 }
 
-const ProductCard = ({ product, index = 0 }) => {
+const ProductCard = ({ product, setIsModalOpen, setProduct, index = 0 }) => {
     const { title, image, discount, discountedPrice, price } = product
 
     return (
@@ -26,50 +26,61 @@ const ProductCard = ({ product, index = 0 }) => {
             custom={index}
             viewport={{ once: true }}
             whileTap={{ scale: 0.98 }}
-            className="group relative w-full max-w-75 min-h-93.75 cursor-pointer rounded-2xl border border-slate-500 bg-slate-800/50 shadow-md shadow-black/20 transition-all hover:scale-105 hover:border-cyan-500/50 ease-in backdrop-blur-sm"
+            className="group relative w-full max-w-75 cursor-pointer rounded-2xl border border-slate-200 bg-white shadow-md shadow-black/20 transition-all hover:scale-105 hover:border-blue-600 ease-in backdrop-blur-sm"
             style={{ perspective: 1200 }}
+            onClick={() => {
+                setIsModalOpen(true)
+                setProduct(product)
+            }}
         >
             {/* Image Section */}
-            <div className="relative overflow-hidden rounded-t-xl bg-[#DFDFDF] p-4">
+            <div className="relative overflow-hidden rounded-t-xl bg-[#DFDFDF]">
                 <motion.img
                     src={image}
                     alt={title}
-                    className="relative z-10 mx-auto h-56 object-contain"
-                    whileHover={{ scale: 1.12, y: -6 }}
+                    className="relative z-10 mx-auto w-full object-cover"
+                    whileHover={{ scale: 1.05, y: -6 }}
                     transition={{ type: "spring", stiffness: 120 }}
+                    draggable={false}
                 />
 
                 {/* Glass Hover Overlay */}
                 <div className="absolute inset-0 bg-white/1 backdrop-blur opacity-0 transition-opacity group-hover:opacity-100" />
 
                 {/* Discount Badge */}
-                {discount && (
+                {/* {discount && (
                     <motion.span
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 200 }}
-                        className="absolute left-3 top-3 z-20 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 px-3 py-1 text-xs font-bold text-white shadow-lg shadow-cyan-500/30"
+                        className="absolute left-3 top-3 z-20 rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold text-white shadow-lg shadow-cyan-500/30"
                     >
                         -{discount}%
                     </motion.span>
-                )}
+                )} */}
             </div>
 
             {/* Content */}
-            <div className="p-4">
-                <h3 className="mb-2 line-clamp-2 text-base tracking-wider text-white transition-colors group-hover:text-cyan-400">
+            <div className="p-4 h-20">
+                <h3
+                    className="mb-2 line-clamp-2 text-base tracking-wider text-black transition-colors group-hover:text-blue-600 cursor-pointer"
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        setIsModalOpen(true)
+                    }}
+                >
                     {title}
                 </h3>
 
                 {/* Price */}
-                <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold text-cyan-400 tracking-wider">${price}</span>
+                {/* <div className="flex items-center gap-2">
+                    <span className="text-xl font-bold text-blue-600 tracking-wider">${price}</span>
                     {discountedPrice && (
-                        <span className="text-sm text-slate-300 tracking-wider line-through">
+                        <span className="text-sm text-slate-600 tracking-wider line-through">
                             ${discountedPrice}
                         </span>
                     )}
-                </div>
+                </div> */}
             </div>
         </motion.div>
     )

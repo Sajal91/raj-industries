@@ -9,11 +9,11 @@ export const productCategories = [
 
 const CategoryBar = () => {
 
-    return <div className="sticky z-999 top-0 hidden lg:flex items-center px-4 sm:px-10 py-3 bg-slate-900/95">
+    return <div className="sticky z-999 top-0 hidden lg:flex items-center px-4 sm:px-10 py-3 bg-slate-100 border-b border-slate-200">
         <ul className="flex flex-1 justify-center space-x-8">
             {productCategories.map((item) => (
                 <li key={item}>
-                    <a className="hover:text-blue-400 text-white/90 font-medium text-sm cursor-pointer transition-colors duration-200 uppercase tracking-wider">
+                    <a className="hover:text-blue-600 text-black/90 font-medium text-sm cursor-pointer transition-colors duration-200 uppercase tracking-wider">
                         {item}
                     </a>
                 </li>
