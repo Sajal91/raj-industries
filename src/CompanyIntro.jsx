@@ -86,7 +86,7 @@ const CompanyIntro = () => {
                             className="space-y-4 text-base tracking-wider text-slate-600 leading-relaxed mb-8"
                         >
                             <li>
-                                Raj Industries is a leading manufacturer and importer of high-quality home appliance products, proudly serving the Indian market since <span className="font-semibold text-blue-600">2005</span>. With <span className="font-semibold text-blue-600">20 years of experience</span> in the home appliances industry, we have built a strong reputation for reliability, innovation, and consistent quality.
+                                Raj Industries is a leading manufacturer and importer of high-quality home appliance products, proudly serving the Indian market since <span className="font-semibold text-blue-600">2005</span>. With <span className="font-semibold text-blue-600">25 years of experience</span> in the home appliances industry, we have built a strong reputation for reliability, innovation, and consistent quality.
                             </li>
                             <li>
                                 We are recognized as <span className="font-semibold text-blue-600">India's largest manufacturer of fountain pump magnets</span> and offer the <span className="font-semibold text-blue-600">widest range of cooler and fountain pump magnets</span> available in the country. Our products are trusted by OEMs, distributors, and service professionals across India.

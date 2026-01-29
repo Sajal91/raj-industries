@@ -49,7 +49,7 @@ const Banner = () => {
                                 <img
                                     src={slide.img}
                                     alt={slide.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full"
                                 />
                             </motion.div>
                             <div className="absolute inset-0 bg-black/10"></div>

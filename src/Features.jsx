@@ -2,6 +2,7 @@ import { BriefcaseIcon, CheckCircleIcon, GearSixIcon, HandshakeIcon, PackageIcon
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import bgImg from "./assets/ads/img-1.jpg"
 
 const Features = () => {
     const ref = useRef(null)
@@ -10,7 +11,7 @@ const Features = () => {
     const features = [
         {
             icon: BriefcaseIcon,
-            title: "20 Years of Industry Experience",
+            title: "25 Years of Industry Experience",
             description: "All our products undergo rigorous quality testing to ensure they meet the highest industrial standards and deliver exceptional performance.",
         },
         {
@@ -75,8 +76,16 @@ const Features = () => {
     }
 
     return (
-        <section className="py-20 px-6 sm:px-10 bg-linear-to-b from-white via-slate-50 to-white" ref={ref}>
-            <div className="max-w-7xl mx-auto">
+        <section
+            className={`py-20 px-6 sm:px-10 relative bg-fixed bg-center`}
+            style={{ backgroundImage: `url(${bgImg})` }}
+            ref={ref}
+        >
+            <div
+                className="absolute left-0 top-0 w-full h-full bg-black/50 z-1"
+                style={{ backdropFilter: "blur(10px)" }}
+            />
+            <div className="relative max-w-7xl mx-auto z-100">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -30 }}
@@ -84,7 +93,7 @@ const Features = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Why Choose Us?
                     </h2>
                     <motion.div
@@ -93,7 +102,7 @@ const Features = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="h-1 bg-blue-600 mx-auto mb-6 rounded-full"
                     ></motion.div>
-                    <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed tracking-wider">
+                    <p className="text-lg text-white max-w-4xl mx-auto leading-relaxed tracking-wider">
                         We are committed to delivering excellence through quality products, innovative solutions, and exceptional customer service.
                     </p>
                 </motion.div>
@@ -142,7 +151,7 @@ const Features = () => {
                     className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
                 >
                     {[
-                        { number: "20+", label: "Years Experience" },
+                        { number: "25+", label: "Years Experience" },
                         { number: "500+", label: "Happy Clients" },
                         { number: "1000+", label: "Projects Completed" },
                         { number: "24/7", label: "Support Available" }
@@ -154,7 +163,7 @@ const Features = () => {
                             animate={isInView ? "visible" : "hidden"}
                             transition={{ delay: 0.6 + index * 0.1 }}
                             // whileHover={{ scale: 1.1, y: -5 }}
-                            className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 text-blue-600 shadow-lg transition-all ease-in"
+                            className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 text-white shadow-lg transition-all ease-in"
                         >
                             <motion.div
                                 initial={{ scale: 0 }}
@@ -164,7 +173,7 @@ const Features = () => {
                             >
                                 {stat.number}
                             </motion.div>
-                            <div className="text-black tracking-wide font-semibold">{stat.label}</div>
+                            <div className="text-white tracking-wide font-semibold">{stat.label}</div>
                         </motion.div>
                     ))}
                 </motion.div>

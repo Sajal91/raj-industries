@@ -62,7 +62,7 @@ const Footer = () => {
                 </ul>
             </div>
 
-            <ul className="grid max-sm:grid-cols-1 max-lg:grid-cols-2 lg:grid-cols-4 gap-12 mt-20">
+            <ul className="grid max-sm:grid-cols-1 max-lg:grid-cols-2 lg:grid-cols-3 gap-12 mt-20">
                 <li className="flex items-center">
                     <div className="bg-gray-300 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-black" viewBox="0 0 482.6 482.6">
@@ -71,9 +71,9 @@ const Footer = () => {
                                 data-original="#000000" />
                         </svg>
                     </div>
-                    <a href="tel:+1805482588" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
+                    <a href="tel:8860617758" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
                         <small className="block text-slate-400">Phone</small>
-                        <span className="font-medium">+1 (805) 482-588</span>
+                        <span className="font-medium">+91 8860617758</span>
                     </a>
                 </li>
                 <li className="flex items-center">
@@ -84,9 +84,9 @@ const Footer = () => {
                                 data-original="#000000" />
                         </svg>
                     </div>
-                    <a href="mailto:info@rajindustries.com" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
+                    <a href="mailto:Rajtronicacity@gmail.com" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
                         <small className="block text-slate-400">Email</small>
-                        <span className="font-medium">info@rajindustries.com</span>
+                        <span className="font-medium">Rajtronicacity@gmail.com</span>
                     </a>
                 </li>
                 <li className="flex items-center">
@@ -102,10 +102,10 @@ const Footer = () => {
                     </div>
                     <a href="javascript:void(0)" className="text-slate-300 text-sm ml-3 hover:text-white transition-colors">
                         <small className="block text-slate-400">Address</small>
-                        <span className="font-medium">Industrial Area, Phase II<br />Manufacturing District<br />India</span>
+                        <span className="font-medium">PLOT A 165 SECTOR A 4 TRONICA CITY UPSIDC<br />GHAZIABAD UTTAR PRADESH 201102<br />India</span>
                     </a>
                 </li>
-                <li className="flex items-center">
+                {/* <li className="flex items-center">
                     <div className="bg-gray-300 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-black" viewBox="0 0 100 100">
                             <path
@@ -117,7 +117,7 @@ const Footer = () => {
                         <small className="block text-slate-400">Fax</small>
                         <span className="font-medium">+1 (805) 482-589</span>
                     </a>
-                </li>
+                </li> */}
             </ul>
 
             <hr className="mt-14 mb-6 border-gray-600" />

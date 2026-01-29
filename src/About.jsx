@@ -19,6 +19,9 @@ import {
     Handshake,
     Leaf
 } from "lucide-react"
+import img9 from "./assets/ads/img-9.jpeg"
+import img5 from "./assets/ads/img-5.jpeg"
+import img2 from "./assets/ads/img-2.jpeg"
 
 const About = () => {
     const ref = useRef(null)
@@ -78,7 +81,7 @@ const About = () => {
                             transition={{ delay: 0.4, duration: 0.8 }}
                             className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8"
                         >
-                            20 Years of Excellence in Manufacturing Premium Pump Components & Home Appliances
+                            25 Years of Excellence in Manufacturing Premium Pump Components & Home Appliances
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
@@ -149,7 +152,8 @@ const About = () => {
                             <div className="order-1 lg:order-2">
                                 <div className="relative rounded-2xl overflow-hidden bg-linear-to-br from-blue-50 to-white p-8 shadow-xl">
                                     <div className="aspect-square bg-linear-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center">
-                                        <Magnet className="w-32 h-32 text-blue-600 opacity-20" />
+                                        {/* <Magnet className="w-32 h-32 text-blue-600 opacity-20" /> */}
+                                        <img src={img9} alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +164,8 @@ const About = () => {
                             <div>
                                 <div className="relative rounded-2xl overflow-hidden bg-linear-to-br from-blue-50 to-white p-8 shadow-xl">
                                     <div className="aspect-square bg-linear-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center">
-                                        <Droplets className="w-32 h-32 text-blue-600 opacity-20" />
+                                        {/* <Droplets className="w-32 h-32 text-blue-600 opacity-20" /> */}
+                                        <img src={img5} alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +226,8 @@ const About = () => {
                             <div className="order-1 lg:order-2">
                                 <div className="relative rounded-2xl overflow-hidden bg-linear-to-br from-blue-50 to-white p-8 shadow-xl">
                                     <div className="aspect-square bg-linear-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center">
-                                        <Home className="w-32 h-32 text-blue-600 opacity-20" />
+                                        {/* <Home className="w-32 h-32 text-blue-600 opacity-20" /> */}
+                                        <img src={img2} alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -290,7 +296,7 @@ const About = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[
-                            { icon: <Award />, text: "20 Years of Industry Experience" },
+                            { icon: <Award />, text: "25 Years of Industry Experience" },
                             { icon: <Package />, text: "Largest Range of Fountain & Cooler Pump Magnets in India" },
                             { icon: <Factory />, text: "Advanced Manufacturing Infrastructure" },
                             { icon: <Shield />, text: "Strict Quality Control Processes" },

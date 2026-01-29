@@ -59,72 +59,72 @@ const Navbar = () => {
     }, [isOpen]);
 
     return (
-        <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 ${isScrolled ? "shadow-xl" : "shadow-lg"} overflow-hidden py-10`}>
-            {/* <div className="absolute left-0 top-0 w-1/2 h-full -z-1 bg-blue-600 rotate-35"></div> */}
-            {/* Top Bar */}
-            <section className="flex items-center px-4 sm:px-6 md:px-10 py-3 md:py-4">
-                {/* Logo */}
-                <NavLink to="/" className="flex items-center shrink-0">
-                    <motion.img
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        src={logo}
-                        alt="Raj Industries Logo"
-                        className="h-10 sm:h-12 md:h-14"
-                    />
-                </NavLink>
+        <>
+            <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 ${isScrolled ? "shadow-xl" : "shadow-lg"} overflow-hidden py-10`}>
+                {/* <div className="absolute left-0 top-0 w-1/2 h-full -z-1 bg-blue-600 rotate-35"></div> */}
+                {/* Top Bar */}
+                <section className="flex items-center px-4 sm:px-6 md:px-10 py-3 md:py-4">
+                    {/* Logo */}
+                    <NavLink to="/" className="flex items-center shrink-0">
+                        <motion.img
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            src={logo}
+                            alt="Raj Industries Logo"
+                            className="h-10 sm:h-12 md:h-14"
+                        />
+                    </NavLink>
 
-                {/* Desktop Menu */}
-                <nav className="hidden lg:flex flex-1 justify-center items-center">
-                    <ul className="flex gap-8 xl:gap-10">
-                        {routes.map((item) => {
-                            const isActive = location.pathname === item.url;
-                            return (
-                                <li key={item.name}>
-                                    <NavLink
-                                        to={item.url}
-                                        className={`text-black tracking-wider relative group font-medium transition-colors duration-200 text-xl ${
-                                            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"
-                                        }`}
-                                    >
-                                        {item.name}
-                                        {/* Active indicator */}
-                                        <motion.span
-                                            className="absolute -bottom-1 left-0 h-0.5 bg-blue-600"
-                                            initial={{ width: isActive ? "100%" : "0%" }}
-                                            animate={{ width: isActive ? "100%" : "0%" }}
-                                            whileHover={{ width: "100%" }}
-                                            transition={{ duration: 0.3 }}
-                                        />
-                                    </NavLink>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
+                    {/* Desktop Menu */}
+                    <nav className="hidden lg:flex flex-1 justify-center items-center">
+                        <ul className="flex gap-8 xl:gap-10">
+                            {routes.map((item) => {
+                                const isActive = location.pathname === item.url;
+                                return (
+                                    <li key={item.name}>
+                                        <NavLink
+                                            to={item.url}
+                                            className={`text-black tracking-wider relative group font-medium transition-colors duration-200 text-xl ${isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"
+                                                }`}
+                                        >
+                                            {item.name}
+                                            {/* Active indicator */}
+                                            <motion.span
+                                                className="absolute -bottom-1 left-0 h-0.5 bg-blue-600"
+                                                initial={{ width: isActive ? "100%" : "0%" }}
+                                                animate={{ width: isActive ? "100%" : "0%" }}
+                                                whileHover={{ width: "100%" }}
+                                                transition={{ duration: 0.3 }}
+                                            />
+                                        </NavLink>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </nav>
 
-                {/* Right Actions */}
-                <div className="ml-auto flex items-center gap-2 sm:gap-3 md:gap-4">
-                    {/* 🔍 Search */}
-                    <div ref={searchRef} className="relative hidden sm:flex items-center">
-                        {/* Input */}
-                        <AnimatePresence>
-                            {isSearchOpen && (
-                                <motion.input
-                                    initial={{ width: 0, opacity: 0, x: 20 }}
-                                    animate={{ width: 200, opacity: 1, x: 0 }}
-                                    exit={{ width: 0, opacity: 0, x: 20 }}
-                                    transition={{ duration: 0.3 }}
-                                    type="text"
-                                    placeholder="Search products..."
-                                    className="absolute right-10 h-9 md:h-10 rounded-full px-4 text-sm outline-none border border-blue-200 shadow-md text-black bg-white placeholder:text-slate-400 focus:border-blue-600"
-                                    autoFocus
-                                />
-                            )}
-                        </AnimatePresence>
+                    {/* Right Actions */}
+                    <div className="ml-auto flex items-center gap-2 sm:gap-3 md:gap-4">
+                        {/* 🔍 Search */}
+                        <div ref={searchRef} className="relative hidden sm:flex items-center">
+                            {/* Input */}
+                            <AnimatePresence>
+                                {isSearchOpen && (
+                                    <motion.input
+                                        initial={{ width: 0, opacity: 0, x: 20 }}
+                                        animate={{ width: 200, opacity: 1, x: 0 }}
+                                        exit={{ width: 0, opacity: 0, x: 20 }}
+                                        transition={{ duration: 0.3 }}
+                                        type="text"
+                                        placeholder="Search products..."
+                                        className="absolute right-10 h-9 md:h-10 rounded-full px-4 text-sm outline-none border border-blue-200 shadow-md text-black bg-white placeholder:text-slate-400 focus:border-blue-600"
+                                        autoFocus
+                                    />
+                                )}
+                            </AnimatePresence>
 
-                        {/* Icon */}
-                        {/* <motion.button
+                            {/* Icon */}
+                            {/* <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setIsSearchOpen((prev) => !prev)}
@@ -134,31 +134,32 @@ const Navbar = () => {
                         >
                             <Search size={18} className={isSearchOpen ? "text-blue-600" : ""} />
                         </motion.button> */}
+                        </div>
+
+                        {/* CTA */}
+                        <motion.button
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => navigate("/contact")}
+                            className="hidden sm:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-full font-semibold text-sm md:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
+                        >
+                            Get Quote
+                        </motion.button>
+
+                        {/* Hamburger */}
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => setIsOpen(true)}
+                            className="lg:hidden text-black p-2 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                            aria-label="Open menu"
+                        >
+                            <ListIcon size={24} />
+                        </motion.button>
                     </div>
+                </section>
 
-                    {/* CTA */}
-                    <motion.button
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => navigate("/contact")}
-                        className="hidden sm:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-full font-semibold text-sm md:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
-                    >
-                        Get Quote
-                    </motion.button>
-
-                    {/* Hamburger */}
-                    <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => setIsOpen(true)}
-                        className="lg:hidden text-black p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                        aria-label="Open menu"
-                    >
-                        <ListIcon size={24} />
-                    </motion.button>
-                </div>
-            </section>
-
+            </header>
             {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
@@ -171,20 +172,20 @@ const Navbar = () => {
                             className="fixed inset-0 bg-black/70 z-40 lg:hidden"
                         />
                         <motion.aside
-                            initial={{ x: "-100%" }}
+                            initial={{ x: "100%" }}
                             animate={{ x: 0 }}
-                            exit={{ x: "-100%" }}
+                            exit={{ x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white border-r border-slate-200 z-50 shadow-2xl lg:hidden overflow-y-auto"
+                            className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white border-r border-slate-200 z-50 shadow-2xl lg:hidden overflow-y-auto"
                         >
                             {/* Header */}
                             <div className="flex items-center justify-between p-4 border-b border-slate-200 sticky top-0 bg-white z-10">
                                 <img src={logo} alt="Raj Industries Logo" className="h-10" />
                                 <motion.button
-                                    whileHover={{ scale: 1.1, rotate: 90 }}
+                                    // whileHover={{ scale: 1.1, rotate: 90 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => setIsOpen(false)}
-                                    className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 text-black transition-colors"
+                                    className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 text-black transition-colors cursor-pointer"
                                     aria-label="Close menu"
                                 >
                                     <XIcon size={20} />
@@ -208,11 +209,10 @@ const Navbar = () => {
                                                     <NavLink
                                                         to={item.url}
                                                         onClick={() => setIsOpen(false)}
-                                                        className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                                                            isActive
+                                                        className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${isActive
                                                                 ? "bg-blue-600 text-white shadow-md"
                                                                 : "text-black hover:bg-slate-100 hover:text-blue-600"
-                                                        }`}
+                                                            }`}
                                                     >
                                                         <div className="flex items-center justify-between">
                                                             <span>{item.name}</span>
@@ -232,7 +232,7 @@ const Navbar = () => {
                                 </nav>
 
                                 {/* Product Categories */}
-                                <div className="mb-8">
+                                {/* <div className="mb-8">
                                     <h3 className="font-bold text-sm uppercase tracking-wider mb-4 text-slate-500 px-4">
                                         Product Categories
                                     </h3>
@@ -250,7 +250,7 @@ const Navbar = () => {
                                             </motion.li>
                                         ))}
                                     </ul>
-                                </div>
+                                </div> */}
 
                                 {/* Mobile CTA */}
                                 <motion.button
@@ -263,7 +263,7 @@ const Navbar = () => {
                                 </motion.button>
 
                                 {/* Mobile Search */}
-                                <div className="mt-4">
+                                {/* <div className="mt-4">
                                     <div className="relative">
                                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                                         <input
@@ -272,13 +272,13 @@ const Navbar = () => {
                                             className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-300 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none text-sm"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </motion.aside>
                     </>
                 )}
             </AnimatePresence>
-        </header>
+        </>
     );
 };
 
