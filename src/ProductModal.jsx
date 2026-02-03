@@ -21,6 +21,8 @@ const ProductModal = ({ product, isOpen, onClose }) => {
     if (!product) return null
 
     const { title, image, discount, discountedPrice, price, description, features, specifications } = product
+    // Support both single image (string) and array of images
+    const images = Array.isArray(image) ? image : (image ? [image] : [])
 
     const handleQuantityChange = (delta) => {
         setQuantity(Math.max(1, quantity + delta))
@@ -100,22 +102,25 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                                 {/* Left Side - Image Gallery */}
                                 <div className="md:w-1/2 bg-linear-to-br from-slate-50 to-white p-6 flex flex-col">
                                     {/* Main Image */}
-                                    <div className="relative flex rounded-xl bg-linear-to-br from-slate-100 to-slate-50 mb-4 group">
-                                        <motion.img
-                                            key={selectedImage}
-                                            initial={{ opacity: 0, scale: 1.1 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.3 }}
-                                            src={image}
-                                            alt={title}
-                                            className="w-full h-full object-contain"
-                                            draggable={false}
-                                        />
+                                    <div className="relative flex rounded-xl bg-linear-to-br from-slate-100 to-slate-50 mb-4 group min-h-[200px]">
+                                        {images.length > 0 && (
+                                            <motion.img
+                                                key={selectedImage}
+                                                initial={{ opacity: 0, scale: 1.1 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.3 }}
+                                                src={images[selectedImage] || images[0]}
+                                                alt={title}
+                                                className="w-full h-full object-contain"
+                                                draggable={false}
+                                            />
+                                        )}
                                     </div>
 
                                     {/* Thumbnail Gallery (if multiple images) */}
+                                    {images.length > 1 && (
                                     <div className="flex gap-2">
-                                        {[image, image, image].slice(0, 3).map((img, idx) => (
+                                        {images.slice(0, 3).map((img, idx) => (
                                             <button
                                                 key={idx}
                                                 onClick={() => setSelectedImage(idx)}
@@ -133,6 +138,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                                             </button>
                                         ))}
                                     </div>
+                                    )}
                                 </div>
 
                                 {/* Right Side - Product Details */}

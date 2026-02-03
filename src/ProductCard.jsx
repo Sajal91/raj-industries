@@ -17,6 +17,8 @@ const cardVariants = {
 
 const ProductCard = ({ product, setIsModalOpen, setProduct, index = 0 }) => {
     const { title, image, discount, discountedPrice, price } = product
+    // Support both single image (string) and array of images
+    const imageSrc = Array.isArray(image) ? image[0] : image
 
     return (
         <motion.div
@@ -35,14 +37,16 @@ const ProductCard = ({ product, setIsModalOpen, setProduct, index = 0 }) => {
         >
             {/* Image Section */}
             <div className="relative overflow-hidden rounded-t-xl bg-[#DFDFDF]">
-                <motion.img
-                    src={image}
-                    alt={title}
-                    className="relative z-10 mx-auto w-full object-cover"
-                    whileHover={{ scale: 1.05, y: -6 }}
-                    transition={{ type: "spring", stiffness: 120 }}
-                    draggable={false}
-                />
+                {imageSrc && (
+                    <motion.img
+                        src={imageSrc}
+                        alt={title}
+                        className="relative z-10 mx-auto w-full h-full object-contain min-h-[200px]"
+                        whileHover={{ scale: 1.05, y: -6 }}
+                        transition={{ type: "spring", stiffness: 120 }}
+                        draggable={false}
+                    />
+                )}
 
                 {/* Glass Hover Overlay */}
                 <div className="absolute inset-0 bg-white/1 backdrop-blur opacity-0 transition-opacity group-hover:opacity-100" />
@@ -67,6 +71,7 @@ const ProductCard = ({ product, setIsModalOpen, setProduct, index = 0 }) => {
                     onClick={(e) => {
                         e.stopPropagation()
                         setIsModalOpen(true)
+                        setProduct(product)
                     }}
                 >
                     {title}

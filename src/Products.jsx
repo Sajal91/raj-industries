@@ -3,7 +3,8 @@ import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { products } from "./data/productData";
 import ProductList from "./ProductList";
-import { Link, NavLink } from "react-router"
+import { NavLink } from "react-router"
+import { Helmet } from "react-helmet-async";
 
 const Products = ({ setIsModalOpen, setProduct }) => {
     const ref = useRef(null)
@@ -11,6 +12,16 @@ const Products = ({ setIsModalOpen, setProduct }) => {
 
     return (
         <section ref={ref} className="py-20 px-6 sm:px-10 bg-linear-to-b from-white via-slate-50 to-white">
+            <Helmet>
+                <title>Premium Industrial Solutions | Quality Pumps & Magnets</title>
+                <meta name="description" content="Leading manufacturer of industrial pumps and magnets with 20 years of excellence. Discover reliable, high-performance solutions for your business today." />
+                <meta name="keyword" content="Leading manufacturer of industrial pumps and magnets with 20 years of excellence. Discover reliable, high-performance solutions for your business today." />
+
+                <meta property="og:url" content="https://rajtronicacity.com/products" />
+                <meta property="og:title" content="Premium Industrial Solutions | Quality Pumps & Magnets" />
+                <meta property="og:description" content="Trusted by industry leaders for 20 years. Explore our range of high-performance industrial equipment." />
+                <meta property="og:image" content="./favicon.png" />
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <motion.div
@@ -46,7 +57,7 @@ const Products = ({ setIsModalOpen, setProduct }) => {
                     <NavLink to="/products">
                         <motion.button
                             whileTap={{ scale: 0.95 }}
-                            className="bg-linear-to-r from-cyan-500 to-blue-500 hover:hover:bg-blue-700 text-black px-8 py-4 rounded-lg font-bold text-lg shadow-lg transition-all cursor-pointer"
+                            className="bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
                         >
                             View All Products
                         </motion.button>

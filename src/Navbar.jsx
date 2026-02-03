@@ -60,7 +60,7 @@ const Navbar = () => {
 
     return (
         <>
-            <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 ${isScrolled ? "shadow-xl" : "shadow-lg"} overflow-hidden py-10`}>
+            <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 ${isScrolled ? "shadow-xl" : "shadow-lg"} overflow-hidden py-1`}>
                 {/* <div className="absolute left-0 top-0 w-1/2 h-full -z-1 bg-blue-600 rotate-35"></div> */}
                 {/* Top Bar */}
                 <section className="flex items-center px-4 sm:px-6 md:px-10 py-3 md:py-4">
@@ -84,7 +84,7 @@ const Navbar = () => {
                                     <li key={item.name}>
                                         <NavLink
                                             to={item.url}
-                                            className={`text-black tracking-wider relative group font-medium transition-colors duration-200 text-xl ${isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"
+                                            className={`text-black tracking-wide relative group transition-colors duration-200 text-base ${isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"
                                                 }`}
                                         >
                                             {item.name}
@@ -106,8 +106,7 @@ const Navbar = () => {
                     {/* Right Actions */}
                     <div className="ml-auto flex items-center gap-2 sm:gap-3 md:gap-4">
                         {/* 🔍 Search */}
-                        <div ref={searchRef} className="relative hidden sm:flex items-center">
-                            {/* Input */}
+                        {/* <div ref={searchRef} className="relative hidden sm:flex items-center">
                             <AnimatePresence>
                                 {isSearchOpen && (
                                     <motion.input
@@ -123,25 +122,22 @@ const Navbar = () => {
                                 )}
                             </AnimatePresence>
 
-                            {/* Icon */}
-                            {/* <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => setIsSearchOpen((prev) => !prev)}
-                            className={`relative z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white text-black border-2 ${
-                                isSearchOpen ? "border-blue-600" : "border-slate-300"
-                            } hover:border-blue-600 flex items-center justify-center shadow-md cursor-pointer transition-colors`}
-                        >
-                            <Search size={18} className={isSearchOpen ? "text-blue-600" : ""} />
-                        </motion.button> */}
-                        </div>
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setIsSearchOpen((prev) => !prev)}
+                                className={`relative z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white text-black border-2 ${isSearchOpen ? "border-blue-600" : "border-slate-300"
+                                    } hover:border-blue-600 flex items-center justify-center shadow-md cursor-pointer transition-colors`}
+                            >
+                                <Search size={18} className={isSearchOpen ? "text-blue-600" : ""} />
+                            </motion.button>
+                        </div> */}
 
                         {/* CTA */}
                         <motion.button
-                            whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => navigate("/contact")}
-                            className="hidden sm:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-full font-semibold text-sm md:text-base shadow-md hover:shadow-lg transition-all cursor-pointer"
+                            className="hidden sm:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-full text-sm md:text-base shadow-md hover:shadow-lg transition-all cursor-pointer tracking-wider"
                         >
                             Get Quote
                         </motion.button>
@@ -210,8 +206,8 @@ const Navbar = () => {
                                                         to={item.url}
                                                         onClick={() => setIsOpen(false)}
                                                         className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${isActive
-                                                                ? "bg-blue-600 text-white shadow-md"
-                                                                : "text-black hover:bg-slate-100 hover:text-blue-600"
+                                                            ? "bg-blue-600 text-white shadow-md"
+                                                            : "text-black hover:bg-slate-100 hover:text-blue-600"
                                                             }`}
                                                     >
                                                         <div className="flex items-center justify-between">

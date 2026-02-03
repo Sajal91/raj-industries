@@ -35,24 +35,29 @@ const slides = [
 
 const Banner = () => {
     return (
-        <div className="w-full relative overflow-hidden">
+        <div className="w-full">
             <Carousel className="w-full">
                 <CarouselContent>
-                    {slides.map((slide, index) => (
-                        <CarouselItem key={slide.id} className={"relative min-h-125 md:min-h-150 flex items-center justify-center"}>
+                    {slides.map((slide) => (
+                        <CarouselItem key={slide.id} className="relative w-full">
+                            {/* Motion wrapper handles the entry animation */}
                             <motion.div
-                                initial={{ scale: 1.1, opacity: 0 }}
+                                initial={{ scale: 1.05, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ duration: 1.2, ease: "easeOut" }}
-                                className="absolute inset-0"
+                                className="w-full h-auto"
                             >
                                 <img
                                     src={slide.img}
                                     alt={slide.title}
-                                    className="w-full h-full"
+                                    // w-full and h-auto ensures the image stays responsive
+                                    // block removes the bottom whitespace often found in inline elements
+                                    className="w-full h-auto block object-cover"
                                 />
                             </motion.div>
-                            <div className="absolute inset-0 bg-black/10"></div>
+
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
                         </CarouselItem>
                     ))}
                 </CarouselContent>

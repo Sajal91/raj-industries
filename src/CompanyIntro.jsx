@@ -32,7 +32,7 @@ const CompanyIntro = () => {
     return (
         <section className="relative z-1 py-20 px-6 bg-gray-50 sm:px-10 h-full overflow-hidden">
             <div className="max-w-7xl mx-auto h-full flex items-center flex-col" ref={ref}>
-                <motion.h2
+                <motion.h1
                     initial={{ opacity: 0, x: 50 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.3 }}
@@ -40,7 +40,7 @@ const CompanyIntro = () => {
                 >
                     <span>Leading Provider of Industrial</span>
                     <span> Pump & Magnet Solutions</span>
-                </motion.h2>
+                </motion.h1>
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
