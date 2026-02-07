@@ -18,6 +18,8 @@ const Home = ({ setIsModalOpen, setProduct }) => {
                 <meta property="og:title" content="Premium Industrial Solutions | Quality Pumps & Magnets" />
                 <meta property="og:description" content="Trusted by industry leaders for 20 years. Explore our range of high-performance industrial equipment." />
                 <meta property="og:image" content="./favicon.png" />
+
+                <link rel="canonical" href="https://rajtronicacity.com/" />
             </Helmet>
 
             {/* <CategoryBar /> */}

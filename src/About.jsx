@@ -1,14 +1,14 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { 
-    Magnet, 
-    Droplets, 
-    Home, 
-    Award, 
-    Target, 
-    Eye, 
-    Heart, 
+import {
+    Magnet,
+    Droplets,
+    Home,
+    Award,
+    Target,
+    Eye,
+    Heart,
     CheckCircle2,
     Factory,
     Shield,
@@ -22,6 +22,7 @@ import {
 import img9 from "./assets/ads/img-9.jpeg"
 import img5 from "./assets/ads/img-5.jpeg"
 import img2 from "./assets/ads/img-2.jpeg"
+import { Helmet } from "react-helmet-async"
 
 const About = () => {
     const ref = useRef(null)
@@ -51,6 +52,10 @@ const About = () => {
 
     return (
         <div className="min-h-screen bg-white">
+            <Helmet>
+                <link rel="canonical" href="https://rajtronicacity.com/about" />
+            </Helmet>
+
             {/* Hero Section */}
             <section className="relative py-20 px-6 sm:px-10 bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
                 <motion.div
@@ -59,7 +64,7 @@ const About = () => {
                     transition={{ duration: 1 }}
                     className="absolute inset-0 opacity-10"
                 ></motion.div>
-                
+
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}

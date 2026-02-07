@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { Mail, Phone, MapPin, Send, Clock, Globe } from "lucide-react"
+import { Helmet } from "react-helmet-async"
 
 const Contact = () => {
     const ref = useRef(null)
@@ -84,8 +85,12 @@ const Contact = () => {
 
     return (
         <div className="min-h-screen bg-linear-to-b from-white via-slate-50 to-white">
+            <Helmet>
+                <link rel="canonical" href="https://rajtronicacity.com/contact" />
+            </Helmet>
+
             {/* Hero Section */}
-            {/* <section className="relative py-20 px-6 sm:px-10 bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
+            <section className="relative py-20 px-6 sm:px-10 bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -124,7 +129,7 @@ const Contact = () => {
                         ></motion.div>
                     </motion.div>
                 </div>
-            </section> */}
+            </section>
 
             {/* Contact Info Cards */}
             {/* <section className="py-16 px-6 sm:px-10 -mt-10">
@@ -153,7 +158,7 @@ const Contact = () => {
                         ))}
                     </motion.div>
                 </div>
-            </section> */}
+            </section>
 
             {/* Contact Form Section */}
             <section ref={ref} className="py-20 px-6 sm:px-10">

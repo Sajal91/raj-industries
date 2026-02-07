@@ -102,7 +102,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                                 {/* Left Side - Image Gallery */}
                                 <div className="md:w-1/2 bg-linear-to-br from-slate-50 to-white p-6 flex flex-col">
                                     {/* Main Image */}
-                                    <div className="relative flex rounded-xl bg-linear-to-br from-slate-100 to-slate-50 mb-4 group min-h-[200px]">
+                                    <div className="relative flex rounded-xl bg-linear-to-br from-slate-100 to-slate-50 mb-4 group min-h-50">
                                         {images.length > 0 && (
                                             <motion.img
                                                 key={selectedImage}
