@@ -35,8 +35,8 @@ const slides = [
 
 const Banner = () => {
     return (
-        <div className="w-full">
-            <Carousel className="w-full">
+        <div className="w-full group">
+            <Carousel className="w-full" autoplay autoplayDelay={4000}>
                 <CarouselContent>
                     {slides.map((slide) => (
                         <CarouselItem key={slide.id} className="relative w-full">
@@ -63,8 +63,10 @@ const Banner = () => {
                 </CarouselContent>
 
                 <CarouselDots count={slides.length} />
-                <CarouselPrevious />
-                <CarouselNext />
+                <div className="transition-opacity max-md:hidden opacity-0 group-hover:opacity-100">
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </div>
             </Carousel>
         </div>
     )

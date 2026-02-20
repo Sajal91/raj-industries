@@ -19,9 +19,9 @@ import {
     Handshake,
     Leaf
 } from "lucide-react"
-import img9 from "./assets/ads/img-9.jpeg"
-import img5 from "./assets/ads/img-5.jpeg"
-import img2 from "./assets/ads/img-2.jpeg"
+import img9 from "./assets/ads/img-9.webp"
+import img5 from "./assets/ads/img-5.webp"
+import img2 from "./assets/ads/img-2.webp"
 import { Helmet } from "react-helmet-async"
 
 const About = () => {

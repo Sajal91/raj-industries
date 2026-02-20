@@ -2,7 +2,7 @@ import { BriefcaseIcon, CheckCircleIcon, GearSixIcon, HandshakeIcon, PackageIcon
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import bgImg from "./assets/ads/img-1.jpg"
+import bgImg from "./assets/ads/img-1.webp"
 
 const Features = () => {
     const ref = useRef(null)

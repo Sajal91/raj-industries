@@ -1,12 +1,12 @@
-import img1 from "./assets/ads/img-1.jpg"
-import img2 from "./assets/ads/img-2.jpeg"
-import img3 from "./assets/ads/img-3.jpeg"
-import img4 from "./assets/ads/img-4.jpeg"
-// import img5 from "./assets/ads/img-5.jpeg"
-import img6 from "./assets/ads/img-6.jpeg"
-import img7 from "./assets/ads/img-7.jpeg"
-import img8 from "./assets/ads/img-8.jpeg"
-import img9 from "./assets/ads/img-9.jpeg"
+import img1 from "./assets/ads/img-1.webp"
+import img2 from "./assets/ads/img-2.webp"
+import img3 from "./assets/ads/img-3.webp"
+import img4 from "./assets/ads/img-4.webp"
+// import img5 from "./assets/ads/img-5.webp"
+import img6 from "./assets/ads/img-6.webp"
+import img7 from "./assets/ads/img-7.webp"
+import img8 from "./assets/ads/img-8.webp"
+import img9 from "./assets/ads/img-9.webp"
 
 const Advertisement = () => {
     return (

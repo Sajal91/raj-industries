@@ -1,14 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router";
+import { NavLink, Link, useLocation, useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "./assets/logo-2.png";
-import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { productCategories } from "./CategoryBar";
-import { ListIcon, XIcon, Search } from "lucide-react";
+import { ListIcon, XIcon } from "lucide-react";
+import { products } from "./data/productData";
+import { productPageData } from "./data/productPageData";
 
 const routes = [
     { name: "Home", url: "/" },
-    { name: "Products", url: "/products" },
     { name: "About", url: "/about" },
     { name: "Contact", url: "/contact" }
 ];
@@ -17,6 +16,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
     const searchRef = useRef(null);
     const location = useLocation();
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ const Navbar = () => {
 
     return (
         <>
-            <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 ${isScrolled ? "shadow-xl" : "shadow-lg"} overflow-hidden py-1`}>
+            <header className={`relative z-50 backdrop-blur-lg bg-transparent border-b border-slate-200 transition-all duration-300 py-1`}>
                 {/* <div className="absolute left-0 top-0 w-1/2 h-full -z-1 bg-blue-600 rotate-35"></div> */}
                 {/* Top Bar */}
                 <section className="flex items-center px-4 sm:px-6 md:px-10 py-3 md:py-4">
@@ -77,18 +77,80 @@ const Navbar = () => {
 
                     {/* Desktop Menu */}
                     <nav className="hidden lg:flex flex-1 justify-center items-center">
-                        <ul className="flex gap-8 xl:gap-10">
-                            {routes.map((item) => {
+                        <ul className="flex gap-8 xl:gap-10 items-center">
+                            <li>
+                                <NavLink
+                                    to="/"
+                                    className={`text-black tracking-wide relative group transition-colors duration-200 text-base ${location.pathname === "/" ? "text-blue-600 font-semibold" : "hover:text-blue-600"}`}
+                                >
+                                    Home
+                                    <motion.span
+                                        className="absolute -bottom-1 left-0 h-0.5 bg-blue-600"
+                                        initial={{ width: location.pathname === "/" ? "100%" : "0%" }}
+                                        animate={{ width: location.pathname === "/" ? "100%" : "0%" }}
+                                        whileHover={{ width: "100%" }}
+                                        transition={{ duration: 0.3 }}
+                                    />
+                                </NavLink>
+                            </li>
+                            {/* Products - unclickable with hover dropdown */}
+                            <li
+                                className="relative group/products cursor-pointer"
+                                onMouseEnter={() => setProductsDropdownOpen(true)}
+                                onMouseLeave={() => setProductsDropdownOpen(false)}
+                            >
+                                <span
+                                    className={`cursor-default text-black tracking-wide relative inline-block transition-colors duration-200 text-base select-none ${location.pathname.startsWith("/products") ? "text-blue-600 font-semibold" : "hover:text-blue-600"} cursor-pointer`}
+                                >
+                                    Products
+                                    {/* <ChevronDown className={`inline-block w-4 h-4 ml-0.5 align-middle transition-transform duration-200 ${productsDropdownOpen ? "rotate-180" : ""}`} /> */}
+                                    <motion.span
+                                        className="absolute -bottom-1 left-0 h-0.5 bg-blue-600"
+                                        initial={{ width: location.pathname.startsWith("/products") ? "100%" : "0%" }}
+                                        animate={{ width: location.pathname.startsWith("/products") || productsDropdownOpen ? "100%" : "0%" }}
+                                        transition={{ duration: 0.3 }}
+                                    />
+                                </span>
+                                <AnimatePresence>
+                                    {productsDropdownOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -8 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -8 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="absolute top-6 left-1/2 -translate-x-1/2 pt-2 z-50"
+                                        >
+                                            <div className="bg-white rounded-xl shadow-xl border border-slate-200 py-2 min-w-50">
+                                                {productPageData.map((product, index) => (
+                                                    <NavLink
+                                                        onClick={() => setProductsDropdownOpen(false)}
+                                                        key={index}
+                                                        to={`/products/${product.slug}`}
+                                                        className={`block px-5 py-3 text-left text-sm transition-colors hover:bg-slate-50 tracking-wider ${location.pathname === `/products/${product.slug}` ? "bg-blue-50 text-blue-600 font-medium" : "text-black"}`}
+                                                    >
+                                                        {product.pageTitle.length > 50 ? product.pageTitle.slice(0, 50) + "…" : product.pageTitle}
+                                                    </NavLink>
+                                                ))}
+                                                {/* <Link
+                                                    to="/products"
+                                                    className="block px-5 py-3 text-left text-sm font-semibold text-blue-600 hover:bg-blue-50 border-t border-slate-100 mt-1"
+                                                >
+                                                    View all products →
+                                                </Link> */}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </li>
+                            {routes.slice(1).map((item) => {
                                 const isActive = location.pathname === item.url;
                                 return (
                                     <li key={item.name}>
                                         <NavLink
                                             to={item.url}
-                                            className={`text-black tracking-wide relative group transition-colors duration-200 text-base ${isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"
-                                                }`}
+                                            className={`text-black tracking-wide relative group transition-colors duration-200 text-base ${isActive ? "text-blue-600 font-semibold" : "hover:text-blue-600"}`}
                                         >
                                             {item.name}
-                                            {/* Active indicator */}
                                             <motion.span
                                                 className="absolute -bottom-1 left-0 h-0.5 bg-blue-600"
                                                 initial={{ width: isActive ? "100%" : "0%" }}
@@ -105,34 +167,6 @@ const Navbar = () => {
 
                     {/* Right Actions */}
                     <div className="ml-auto flex items-center gap-2 sm:gap-3 md:gap-4">
-                        {/* 🔍 Search */}
-                        {/* <div ref={searchRef} className="relative hidden sm:flex items-center">
-                            <AnimatePresence>
-                                {isSearchOpen && (
-                                    <motion.input
-                                        initial={{ width: 0, opacity: 0, x: 20 }}
-                                        animate={{ width: 200, opacity: 1, x: 0 }}
-                                        exit={{ width: 0, opacity: 0, x: 20 }}
-                                        transition={{ duration: 0.3 }}
-                                        type="text"
-                                        placeholder="Search products..."
-                                        className="absolute right-10 h-9 md:h-10 rounded-full px-4 text-sm outline-none border border-blue-200 shadow-md text-black bg-white placeholder:text-slate-400 focus:border-blue-600"
-                                        autoFocus
-                                    />
-                                )}
-                            </AnimatePresence>
-
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={() => setIsSearchOpen((prev) => !prev)}
-                                className={`relative z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white text-black border-2 ${isSearchOpen ? "border-blue-600" : "border-slate-300"
-                                    } hover:border-blue-600 flex items-center justify-center shadow-md cursor-pointer transition-colors`}
-                            >
-                                <Search size={18} className={isSearchOpen ? "text-blue-600" : ""} />
-                            </motion.button>
-                        </div> */}
-
                         {/* CTA */}
                         <motion.button
                             whileTap={{ scale: 0.95 }}
@@ -193,14 +227,73 @@ const Navbar = () => {
                                 {/* Navigation Links */}
                                 <nav className="mb-8">
                                     <ul className="space-y-2">
-                                        {routes.map((item, index) => {
+                                        <motion.li
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0 }}
+                                        >
+                                            <NavLink
+                                                to="/"
+                                                onClick={() => setIsOpen(false)}
+                                                className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${location.pathname === "/"
+                                                    ? "bg-blue-600 text-white shadow-md"
+                                                    : "text-black hover:bg-slate-100 hover:text-blue-600"
+                                                    }`}
+                                            >
+                                                <div className="flex items-center justify-between">
+                                                    <span>Home</span>
+                                                    {location.pathname === "/" && (
+                                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-2 h-2 bg-white rounded-full" />
+                                                    )}
+                                                </div>
+                                            </NavLink>
+                                        </motion.li>
+                                        {/* Products - label (non-clickable) + product links */}
+                                        <motion.li
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.1 }}
+                                        >
+                                            <span className="block px-4 py-2 text-sm font-bold uppercase tracking-wider text-slate-500">
+                                                Products
+                                            </span>
+                                            <ul className="mt-1 ml-2 space-y-1 border-l-2 border-slate-200 pl-3">
+                                                {products.map((product, index) => (
+                                                    <li key={index}>
+                                                        <Link
+                                                            to={`/products/${index}`}
+                                                            onClick={() => setIsOpen(false)}
+                                                            className={`block px-3 py-2 rounded-lg text-sm transition-all ${location.pathname === `/products/${index}`
+                                                                ? "bg-blue-50 text-blue-600 font-medium"
+                                                                : "text-slate-700 hover:bg-slate-100 hover:text-blue-600"
+                                                                }`}
+                                                        >
+                                                            {product.title.length > 45 ? product.title.slice(0, 45) + "…" : product.title}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                                <li>
+                                                    <NavLink
+                                                        to="/products"
+                                                        onClick={() => setIsOpen(false)}
+                                                        className={`block px-3 py-2 rounded-lg text-sm font-semibold transition-all ${location.pathname === "/products" && !location.pathname.match(/\/products\/\d+/)
+                                                            ? "bg-blue-50 text-blue-600"
+                                                            : "text-blue-600 hover:bg-blue-50"
+                                                            }`}
+                                                    >
+                                                        View all products →
+                                                    </NavLink>
+                                                </li>
+                                            </ul>
+                                        </motion.li>
+                                        {routes.slice(1).map((item, index) => {
                                             const isActive = location.pathname === item.url;
                                             return (
                                                 <motion.li
                                                     key={item.name}
                                                     initial={{ opacity: 0, x: -20 }}
                                                     animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: index * 0.1 }}
+                                                    transition={{ delay: 0.2 + index * 0.1 }}
                                                 >
                                                     <NavLink
                                                         to={item.url}
@@ -213,11 +306,7 @@ const Navbar = () => {
                                                         <div className="flex items-center justify-between">
                                                             <span>{item.name}</span>
                                                             {isActive && (
-                                                                <motion.div
-                                                                    initial={{ scale: 0 }}
-                                                                    animate={{ scale: 1 }}
-                                                                    className="w-2 h-2 bg-white rounded-full"
-                                                                />
+                                                                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-2 h-2 bg-white rounded-full" />
                                                             )}
                                                         </div>
                                                     </NavLink>

@@ -4,6 +4,7 @@ import * as React from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { cn } from "./lib/util"
+import Autoplay from "embla-carousel-autoplay"
 
 const CarouselContext = React.createContext(null)
 
@@ -15,12 +16,30 @@ function useCarousel() {
     return context
 }
 
-function Carousel({ orientation = "horizontal", opts, className, children }) {
-    const [carouselRef, api] = useEmblaCarousel({
-        ...opts,
-        axis: orientation === "horizontal" ? "x" : "y",
-        loop: true
-    })
+function Carousel({
+    orientation = "horizontal",
+    opts,
+    autoplay = true,
+    autoplayDelay = 3000,
+    className,
+    children,
+}) {
+    const autoplayPlugin = React.useRef(
+        Autoplay({
+            delay: autoplayDelay,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+        })
+    )
+
+    const [carouselRef, api] = useEmblaCarousel(
+        {
+            ...opts,
+            axis: orientation === "horizontal" ? "x" : "y",
+            loop: true,
+        },
+        autoplay ? [autoplayPlugin.current] : []
+    )
 
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
