@@ -254,36 +254,24 @@ const Navbar = () => {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 0.1 }}
                                         >
-                                            <span className="block px-4 py-2 text-sm font-bold uppercase tracking-wider text-slate-500">
+                                            <span className="block px-4 py-2 text-sm font-bold uppercase tracking-wider text-black">
                                                 Products
                                             </span>
                                             <ul className="mt-1 ml-2 space-y-1 border-l-2 border-slate-200 pl-3">
-                                                {products.map((product, index) => (
+                                                {productPageData.map((product, index) => (
                                                     <li key={index}>
                                                         <Link
-                                                            to={`/products/${index}`}
+                                                            to={`/products/${product.slug}`}
                                                             onClick={() => setIsOpen(false)}
-                                                            className={`block px-3 py-2 rounded-lg text-sm transition-all ${location.pathname === `/products/${index}`
+                                                            className={`block px-3 py-2 rounded-lg text-sm transition-all ${location.pathname === `/products/${product.slug}`
                                                                 ? "bg-blue-50 text-blue-600 font-medium"
                                                                 : "text-slate-700 hover:bg-slate-100 hover:text-blue-600"
                                                                 }`}
                                                         >
-                                                            {product.title.length > 45 ? product.title.slice(0, 45) + "…" : product.title}
+                                                            {product.pageTitle.length > 45 ? product.title.slice(0, 45) + "…" : product.pageTitle}
                                                         </Link>
                                                     </li>
                                                 ))}
-                                                <li>
-                                                    <NavLink
-                                                        to="/products"
-                                                        onClick={() => setIsOpen(false)}
-                                                        className={`block px-3 py-2 rounded-lg text-sm font-semibold transition-all ${location.pathname === "/products" && !location.pathname.match(/\/products\/\d+/)
-                                                            ? "bg-blue-50 text-blue-600"
-                                                            : "text-blue-600 hover:bg-blue-50"
-                                                            }`}
-                                                    >
-                                                        View all products →
-                                                    </NavLink>
-                                                </li>
                                             </ul>
                                         </motion.li>
                                         {routes.slice(1).map((item, index) => {
@@ -298,10 +286,7 @@ const Navbar = () => {
                                                     <NavLink
                                                         to={item.url}
                                                         onClick={() => setIsOpen(false)}
-                                                        className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${isActive
-                                                            ? "bg-blue-600 text-white shadow-md"
-                                                            : "text-black hover:bg-slate-100 hover:text-blue-600"
-                                                            }`}
+                                                        className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${isActive ? "bg-blue-600 text-white shadow-md" : "text-black hover:bg-slate-100 hover:text-blue-600"}`}
                                                     >
                                                         <div className="flex items-center justify-between">
                                                             <span>{item.name}</span>
@@ -316,27 +301,6 @@ const Navbar = () => {
                                     </ul>
                                 </nav>
 
-                                {/* Product Categories */}
-                                {/* <div className="mb-8">
-                                    <h3 className="font-bold text-sm uppercase tracking-wider mb-4 text-slate-500 px-4">
-                                        Product Categories
-                                    </h3>
-                                    <ul className="space-y-2">
-                                        {productCategories.map((item, index) => (
-                                            <motion.li
-                                                key={item}
-                                                initial={{ opacity: 0, x: -20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: 0.4 + index * 0.05 }}
-                                            >
-                                                <span className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors">
-                                                    {item}
-                                                </span>
-                                            </motion.li>
-                                        ))}
-                                    </ul>
-                                </div> */}
-
                                 {/* Mobile CTA */}
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
@@ -346,18 +310,6 @@ const Navbar = () => {
                                 >
                                     Get Quote
                                 </motion.button>
-
-                                {/* Mobile Search */}
-                                {/* <div className="mt-4">
-                                    <div className="relative">
-                                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
-                                        <input
-                                            type="text"
-                                            placeholder="Search products..."
-                                            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-300 bg-white text-black placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none text-sm"
-                                        />
-                                    </div>
-                                </div> */}
                             </div>
                         </motion.aside>
                     </>

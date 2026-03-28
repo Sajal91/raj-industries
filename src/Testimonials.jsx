@@ -74,7 +74,7 @@ const Testimonials = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+                    <h2 className="text-2xl md:text-5xl font-bold text-black mb-4">
                         Client Testimonials
                     </h2>
                     <motion.div
@@ -83,7 +83,7 @@ const Testimonials = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="h-1 bg-linear-to-r from-cyan-500 to-blue-500 mx-auto mb-6 rounded-full"
                     ></motion.div>
-                    <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                    <p className="md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
                         See what our valued clients have to say about our products and services. Their success is our commitment.
                     </p>
                 </motion.div>

@@ -36,7 +36,7 @@ const CompanyIntro = () => {
                     initial={{ opacity: 0, x: 50 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="text-4xl md:text-5xl max-w-180 font-bold text-transparent bg-linear-to-br from-blue-900 to-blue-400 bg-clip-text mb-16 leading-tight text-center"
+                    className="text-2xl md:text-5xl max-w-180 font-bold text-transparent bg-linear-to-br from-blue-900 to-blue-400 bg-clip-text mb-16 leading-tight text-center"
                 >
                     <span>Leading Provider of Industrial</span>
                     <span> Pump & Magnet Solutions</span>
@@ -76,7 +76,7 @@ const CompanyIntro = () => {
                     {/* Content Section - Right */}
                     <motion.div
                         variants={itemVariants}
-                        className="bg-white/50 border border-white/5 rounded-2xl p-4 backdrop-blur-2xl"
+                        className="bg-white/50 border border-white/5 rounded-2xl md:p-4 backdrop-blur-2xl"
                     >
 
                         <motion.ul

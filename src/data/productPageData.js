@@ -3,7 +3,7 @@ import PumpMagnet from "../PumpMagnet";
 
 export const productPageData = [
     {
-        pageTitle: "Pump Magnet",
+        pageTitle: "Cooler Pump Magnet",
         slug: "pump-magnet",
         content: PumpMagnet,
         metaTitle: "Pump Magnet by Raj Industries | High Quality Motor Magnets",
@@ -13,7 +13,7 @@ export const productPageData = [
         
     },
     {
-        pageTitle: "Concealed Pumps",
+        pageTitle: "Water Cooler Pump",
         slug: "jusco-pump",
         content: JetroPump,
         metaTitle: "Pump Magnet by Raj Industries | High Quality Motor Magnets",

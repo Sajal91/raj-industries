@@ -93,7 +93,7 @@ const Features = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-2xl md:text-5xl font-bold text-white mb-4">
                         Why Choose Us?
                     </h2>
                     <motion.div
@@ -102,7 +102,7 @@ const Features = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="h-1 bg-blue-600 mx-auto mb-6 rounded-full"
                     ></motion.div>
-                    <p className="text-lg text-white max-w-4xl mx-auto leading-relaxed tracking-wider">
+                    <p className="md:text-lg text-white max-w-4xl mx-auto leading-relaxed tracking-wider">
                         We are committed to delivering excellence through quality products, innovative solutions, and exceptional customer service.
                     </p>
                 </motion.div>

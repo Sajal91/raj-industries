@@ -23,6 +23,8 @@ import img9 from "./assets/ads/img-9.webp"
 import img5 from "./assets/ads/img-5.webp"
 import img2 from "./assets/ads/img-2.webp"
 import { Helmet } from "react-helmet-async"
+import jetroLogo from "./assets/webp/jetro-logo.png"
+import juscoLogo from "./assets/webp/jusco-logo.png"
 
 const About = () => {
     const ref = useRef(null)
@@ -107,7 +109,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Our Expertise</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold text-black mb-4">Our Expertise</h2>
                         <div className="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                         <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                             Leading the industry with innovative solutions and premium quality products
@@ -251,7 +253,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Our Brands</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold text-black mb-4">Our Brands</h2>
                         <div className="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                         <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-8">
                             We proudly operate under our trusted brand names
@@ -260,8 +262,8 @@ const About = () => {
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {[
-                            { name: "JETRO", description: "Known for quality, reliability, and value" },
-                            { name: "JUSCO", description: "Serving domestic and commercial needs across India" }
+                            { name: "JETRO", description: "Known for quality, reliability, and value", image: jetroLogo },
+                            { name: "JUSCO", description: "Serving domestic and commercial needs across India", image: juscoLogo }
                         ].map((brand, idx) => (
                             <motion.div
                                 key={idx}
@@ -270,15 +272,13 @@ const About = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.2, duration: 0.6 }}
                                 whileHover={{ y: -5, scale: 1.02 }}
-                                className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:border-blue-600 hover:shadow-xl transition-all"
+                                className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:border-blue-600 hover:shadow-xl transition-all flex flex-col items-center"
                             >
-                                <div className="text-center">
-                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-600 text-white text-3xl font-bold mb-4">
-                                        {brand.name[0]}
-                                    </div>
-                                    <h3 className="text-3xl font-bold text-black mb-3">{brand.name}</h3>
-                                    <p className="text-slate-600">{brand.description}</p>
+                                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full text-white text-3xl font-bold mb-4 border-2 border-blue-600">
+                                    <img src={brand.image} className="w-full h-full rounded-full" alt="logo" />
                                 </div>
+                                <h3 className="text-3xl font-bold text-black mb-3">{brand.name}</h3>
+                                <p className="text-slate-600 text-center">{brand.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -295,7 +295,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Why Choose Raj Industries</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold text-black mb-4">Why Choose Raj Industries</h2>
                         <div className="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                     </motion.div>
 
@@ -400,7 +400,7 @@ const About = () => {
                         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100 mb-6">
                             <Heart className="w-8 h-8 text-blue-600" />
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Our Core Values</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold text-black mb-4">Our Core Values</h2>
                         <div className="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                     </motion.div>
 

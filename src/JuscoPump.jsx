@@ -13,8 +13,10 @@ import {
     Wrench,
     ArrowRight,
 } from "lucide-react";
+import ProductList from "./ProductList";
+import { products } from "./data/productData";
 
-const JuscoPump = () => {
+const JuscoPump = ({ setProduct, setIsModalOpen }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -139,7 +141,7 @@ const JuscoPump = () => {
             </section>
 
             {/* Intro */}
-            <section ref={ref} className="py-16 px-6 sm:px-10 bg-white">
+            <section ref={ref} className="py-16 px-6 sm:px-10 bg-slate-50">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -169,6 +171,12 @@ const JuscoPump = () => {
                         </motion.p>
                     </motion.div>
                 </div>
+            </section>
+
+            <section className="py-20 px-6 sm:px-10 bg-white">
+                {setProduct && setIsModalOpen && (
+                    <ProductList setProduct={setProduct} setIsModalOpen={setIsModalOpen} products={products.slice(0, 6)} />
+                )}
             </section>
 
             {/* Built for High Pressure & Strong Water Flow */}

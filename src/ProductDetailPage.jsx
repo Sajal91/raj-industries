@@ -28,7 +28,10 @@ const ProductDetailPage = ({ setIsModalOpen, setProduct }) => {
                 <link rel="canonical" href={`https://rajtronicacity.com/products/${productSlug}`} />
             </Helmet>
             <div className="relative z-2">
-                {<product.content />}
+                {product.content && (() => {
+                    const ContentComponent = product.content;
+                    return <ContentComponent setProduct={setProduct} setIsModalOpen={setIsModalOpen} />;
+                })()}
             </div>
         </div>
     );

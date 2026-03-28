@@ -20,7 +20,7 @@ const Products = ({ setIsModalOpen, setProduct }) => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+                    <h2 className="text-2xl md:text-5xl font-bold text-black mb-4">
                         Our Products
                     </h2>
                     <motion.div
@@ -29,7 +29,7 @@ const Products = ({ setIsModalOpen, setProduct }) => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="h-1 bg-linear-to-r from-cyan-500 to-blue-500 mx-auto mb-6 rounded-full"
                     ></motion.div>
-                    <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed tracking-wider">
+                    <p className="md:text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed tracking-wider">
                         Comprehensive solutions for all your pumping and magnetic needs. Quality, reliability, and innovation in every product.
                     </p>
                 </motion.div>
@@ -37,7 +37,7 @@ const Products = ({ setIsModalOpen, setProduct }) => {
                 {/* Products Grid */}
                 <ProductList setProduct={setProduct} setIsModalOpen={setIsModalOpen} products={products.slice(0, 6)} />
 
-                {/* View All Button */}
+                {/* View All Button
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -52,7 +52,7 @@ const Products = ({ setIsModalOpen, setProduct }) => {
                             View All Products
                         </motion.button>
                     </NavLink>
-                </motion.div>
+                </motion.div> */}
             </div>
         </section>
     );
